@@ -80,7 +80,7 @@ MONGODB_URI=mongodb://localhost:27017/sydney-events
 # Google OAuth Configuration
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
-CALLBACK_URL=http://localhost:5000/api/auth/google/callback
+CALLBACK_URL=https://sydney-events-scraping-platform.onrender.com/api/auth/google/callback
 
 # JWT Configuration
 JWT_SECRET=your-super-secret-jwt-key
@@ -97,7 +97,7 @@ USER_AGENT=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 2. Create a new project or select existing one
 3. Enable Google+ API
 4. Create OAuth 2.0 credentials
-5. Add authorized redirect URI: `http://localhost:5000/api/auth/google/callback`
+5. Add authorized redirect URI: `https://sydney-events-scraping-platform.onrender.com/api/auth/google/callback`
 6. Copy Client ID and Client Secret to your `.env` file
 
 ### 5. Frontend Setup
