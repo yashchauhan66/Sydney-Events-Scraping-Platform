@@ -120,8 +120,6 @@ Make sure MongoDB is running on your system:
 ```bash
 
 mongod
-
-# Or use MongoDB Atlas for cloud instance
 ```
 
 ### 7. Run the Application

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import api from '../services/api';
 
 const ManualLogin = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -23,26 +24,16 @@ const ManualLogin = () => {
     setError('');
 
     try {
-      const endpoint = isLogin ? '/api/auth-manual/login' : '/api/auth-manual/register';
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
+      const endpoint = isLogin ? '/auth-manual/login' : '/auth-manual/register';
+      const response = await api.post(endpoint, formData);
 
-      const data = await response.json();
-
-      if (response.ok) {
-        localStorage.setItem('authToken', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
+      if (response.data) {
+        localStorage.setItem('authToken', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.user));
         window.location.href = '/dashboard';
-      } else {
-        setError(data.error || 'Login failed');
       }
     } catch (err) {
-      setError('Network error. Please try again.');
+      setError(err.response?.data?.error || 'Login failed');
     } finally {
       setLoading(false);
     }

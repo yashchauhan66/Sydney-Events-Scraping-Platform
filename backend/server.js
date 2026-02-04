@@ -25,7 +25,7 @@ const limiter = rateLimit({
 app.use('/api/', limiter);
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL || ['http://localhost:3000', 'http://localhost:3001'],
+  origin: process.env.FRONTEND_URL || ['http://localhost:3000', 'http://localhost:3001', 'https://sydney-events-scraping-platform-xov.vercel.app'],
   credentials: true
 }));
 
