@@ -76,6 +76,7 @@ const ManualLogin = () => {
                   required
                   value={formData.displayName}
                   onChange={handleChange}
+                  autoComplete="name"
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                   placeholder="Enter your full name"
                 />
@@ -91,6 +92,7 @@ const ManualLogin = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  autoComplete="email"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   placeholder="Enter your email"
                   required
@@ -107,6 +109,7 @@ const ManualLogin = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
+                  autoComplete={isLogin ? "current-password" : "new-password"}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   placeholder="Enter your password (min 6 characters)"
                   required
