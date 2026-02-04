@@ -44,7 +44,7 @@ const CreateEventForm = ({ onEventCreated }) => {
 
       console.log('Sending event data:', eventData);
 
-      const response = await fetch('http://localhost:5000/api/events', {
+      const response = await fetch('https://sydney-events-scraping-platform.onrender.com/api/events', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

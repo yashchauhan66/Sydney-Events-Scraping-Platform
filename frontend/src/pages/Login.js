@@ -5,7 +5,7 @@ const Login = () => {
   const [useManualLogin, setUseManualLogin] = useState(false);
 
   const handleGoogleLogin = () => {
-    window.location.href = `http://localhost:5000/api/auth/google`;
+    window.location.href = `https://sydney-events-scraping-platform.onrender.com/api/auth/google`;
   };
 
   if (useManualLogin) {

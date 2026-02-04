@@ -2,7 +2,7 @@
 
 A complete MERN stack application that automatically scrapes, stores, and displays public events for Sydney, Australia. The system demonstrates an end-to-end pipeline: scrape → store → auto-update → display → admin review → import → status tagging.
 
-## 🚀 Features
+##  Features
 
 ### Event Scraping System
 - **Multi-source Scraping**: Automatically scrapes events from Eventbrite, TimeOut, and Meetup (Sydney only)
@@ -41,14 +41,14 @@ A complete MERN stack application that automatically scrapes, stores, and displa
 - **Axios** - HTTP client for API calls
 - **Context API** - State management
 
-## 📋 Prerequisites
+##  Prerequisites
 
 - Node.js (v16 or higher)
 - MongoDB (local or cloud instance)
 - Google OAuth credentials
 - Git
 
-## 🚀 Setup Instructions
+##  Setup Instructions
 
 ### 1. Clone the Repository
 
@@ -118,7 +118,7 @@ REACT_APP_API_URL=http://localhost:5000/api
 Make sure MongoDB is running on your system:
 
 ```bash
-# For local MongoDB
+
 mongod
 
 # Or use MongoDB Atlas for cloud instance
@@ -144,7 +144,7 @@ The application will be available at:
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:5000
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 sydney-events-platform/
@@ -199,7 +199,7 @@ sydney-events-platform/
 └── README.md
 ```
 
-## 🔧 API Endpoints
+##  API Endpoints
 
 ### Authentication
 - `GET /api/auth/google` - Initiate Google OAuth
@@ -219,7 +219,7 @@ sydney-events-platform/
 - `GET /api/subscriptions/email/:email` - Get subscriptions by email
 - `GET /api/subscriptions/event/:eventId` - Get subscriptions by event
 
-## 🎯 Usage Guide
+##  Usage Guide
 
 ### For Public Users
 1. Browse events on the homepage
@@ -236,7 +236,7 @@ sydney-events-platform/
 5. Import relevant events to the platform
 6. Monitor statistics and event status
 
-## 🔒 Security Features
+##  Security Features
 
 - **Google OAuth**: Secure authentication using Google accounts
 - **JWT Tokens**: Stateless authentication with expiration
@@ -245,7 +245,7 @@ sydney-events-platform/
 - **Helmet.js**: Security headers for Express
 - **CORS Configuration**: Proper cross-origin resource sharing setup
 
-## 🚀 Production Deployment
+##  Production Deployment
 
 ### Environment Variables
 ```env
@@ -267,7 +267,7 @@ JWT_SECRET=strong-random-secret
 6. Set up SSL certificates
 7. Configure monitoring and logging
 
-## 📈 Scalability Considerations
+##  Scalability Considerations
 
 ### Database Optimization
 - Implement proper indexing for frequently queried fields
@@ -296,7 +296,7 @@ JWT_SECRET=strong-random-secret
 - Set up web application firewall
 - Regular security audits and updates
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -304,11 +304,11 @@ JWT_SECRET=strong-random-secret
 4. Add tests if applicable
 5. Submit a pull request
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License.
 
-## 🆘 Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 
@@ -332,10 +332,7 @@ This project is licensed under the MIT License.
    - Check Node.js version compatibility
    - Verify environment variables
 
-## 📞 Support
 
-For support and questions, please open an issue in the repository or contact the development team.
 
----
 
-**Built with ❤️ for the Sydney events community**
+
