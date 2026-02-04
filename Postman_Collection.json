@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "sydney-events-api",
+		"name": "Sydney Events API",
+		"description": "API collection for Sydney Events Scraping Platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/health",
+					"host": ["{{baseUrl}}"],
+					"path": ["health"]
+				},
+				"description": "Check API health status"
+			}
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Google OAuth Login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/auth/google",
+							"host": ["{{baseUrl}}"],
+							"path": ["auth", "google"]
+						},
+						"description": "Initiate Google OAuth login"
+					}
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/auth/me",
+							"host": ["{{baseUrl}}"],
+							"path": ["auth", "me"]
+						},
+						"description": "Get current authenticated user"
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/auth/logout",
+							"host": ["{{baseUrl}}"],
+							"path": ["auth", "logout"]
+						},
+						"description": "Logout current user"
+					}
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Get Public Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/events?page=1&limit=20&city=Sydney&category=Music&search=concert",
+							"host": ["{{baseUrl}}"],
+							"path": ["events"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page number"
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"description": "Number of events per page"
+								},
+								{
+									"key": "city",
+									"value": "Sydney",
+									"description": "Filter by city"
+								},
+								{
+									"key": "category",
+									"value": "Music",
+									"description": "Filter by category"
+								},
+								{
+									"key": "search",
+									"value": "concert",
+									"description": "Search in title, venue, description"
+								},
+								{
+									"key": "startDate",
+									"value": "2024-01-01",
+									"description": "Filter events from this date"
+								},
+								{
+									"key": "endDate",
+									"value": "2024-12-31",
+									"description": "Filter events until this date"
+								}
+							]
+						},
+						"description": "Get public events with filters and pagination"
+					}
+				},
+				{
+					"name": "Get Single Event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/events/{{eventId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["events", "{{eventId}}"]
+						},
+						"description": "Get details of a single event"
+					}
+				},
+				{
+					"name": "Import Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"importNotes\": \"Great event for music lovers\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/{{eventId}}/import",
+							"host": ["{{baseUrl}}"],
+							"path": ["events", "{{eventId}}", "import"]
+						},
+						"description": "Import an event to the platform (requires authentication)"
+					}
+				},
+				{
+					"name": "Get Dashboard Events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/events/dashboard/all?page=1&limit=50&status=new&search=sydney",
+							"host": ["{{baseUrl}}"],
+							"path": ["events", "dashboard", "all"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "50"
+								},
+								{
+									"key": "status",
+									"value": "new"
+								},
+								{
+									"key": "search",
+									"value": "sydney"
+								}
+							]
+						},
+						"description": "Get all events for dashboard (requires authentication)"
+					}
+				},
+				{
+					"name": "Get Event Statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/events/dashboard/stats",
+							"host": ["{{baseUrl}}"],
+							"path": ["events", "dashboard", "stats"]
+						},
+						"description": "Get event statistics for dashboard (requires authentication)"
+					}
+				}
+			]
+		},
+		{
+			"name": "Subscriptions",
+			"item": [
+				{
+					"name": "Create Email Subscription",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@example.com\",\n    \"eventId\": \"{{eventId}}\",\n    \"consent\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subscriptions",
+							"host": ["{{baseUrl}}"],
+							"path": ["subscriptions"]
+						},
+						"description": "Create email subscription for an event"
+					}
+				},
+				{
+					"name": "Get Subscriptions by Email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/subscriptions/email/user@example.com",
+							"host": ["{{baseUrl}}"],
+							"path": ["subscriptions", "email", "user@example.com"]
+						},
+						"description": "Get all subscriptions for a specific email"
+					}
+				},
+				{
+					"name": "Get Subscriptions by Event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/subscriptions/event/{{eventId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["subscriptions", "event", "{{eventId}}"]
+						},
+						"description": "Get all subscriptions for a specific event"
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000/api",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "",
+			"type": "string",
+			"description": "JWT token obtained from Google OAuth"
+		},
+		{
+			"key": "eventId",
+			"value": "",
+			"type": "string",
+			"description": "MongoDB ObjectId of an event"
+		}
+	]
+}
