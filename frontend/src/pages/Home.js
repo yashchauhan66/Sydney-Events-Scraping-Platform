@@ -92,7 +92,15 @@ const Home = () => {
       handleModalClose();
     } catch (error) {
       console.error('Subscription error:', error);
-      alert(error.response?.data?.error || 'Failed to subscribe. Please try again.');
+      if (error.response?.status === 409) {
+        // User is already subscribed - this is not really an error
+        if (selectedEvent?.originalEventUrl) {
+          window.open(selectedEvent.originalEventUrl, '_blank');
+        }
+        handleModalClose();
+      } else {
+        alert(error.response?.data?.error || 'Failed to subscribe. Please try again.');
+      }
     }
   };
 
